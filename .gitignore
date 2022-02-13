@@ -8,11 +8,6 @@ node_modules
 # testing
 coverage
 
-# next.js
-.next/
-out/
-build
-
 # misc
 .DS_Store
 *.pem
@@ -31,3 +26,18 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+# Apps
+.DS_Store
+apps/*/.vite-ssg-dist
+apps/*/.vite-ssg-temp
+apps/*/*.local
+apps/*/dist
+apps/*/dist-ssr
+apps/*/node_modules
+apps/*/*.log
+apps/*/public
+
+# Packages
+packages/*/node_modules
+packages/*/dist

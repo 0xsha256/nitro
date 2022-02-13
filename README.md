@@ -1,17 +1,19 @@
-# Turborepo starter with pnpm
+# Nitro
 
-This is an official starter turborepo.
+A turborepo with with the fastest tools available to build full stack JS applications and deploy instantly with vercel.
 
 ## What's inside?
 
-This turborepo uses [pnpm](https://pnpm.io) as a packages manager. It includes the following packages/apps:
+This turborepo uses [pnpm](https://pnpm.io) as a packages manager. It includes the following apps/saas/packages:
 
-### Apps and Packages
+### Apps
+- `server`: [Express.js](https://expressjs.com/) app with auto routing
+- `client`: [Vue.js](https://vuejs.org/) app built with [Vite.js](https://vitejs.dev) - modified [ vitesse fork](https://github.com/antfu/vitesse)
+- `docs`: a [Vitepress](https://vitepress.vuejs.org/) app
 
-- `docs`: a [Next.js](https://nextjs.org) app
-- `web`: another [Next.js](https://nextjs.org) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+### Packages
+- `ui`: Vue component library shared by both `client` and `docs` applications
+- `config`: `eslint` configurations for Vue and Node.
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
@@ -22,28 +24,30 @@ This turborepo has some additional tools already setup for you:
 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
 
 ## Setup
 
-This repository is used in the `npx create-turbo@latest` command, and selected when choosing which package manager you wish to use with your monorepo (PNPM).
+This repository was created with the `npx create-turbo@latest` command, and selected PNPM when choosing  package manager for this monorepo.
 
 ### Build
-
 To build all apps and packages, run the following command:
 
 ```
-cd my-turborepo
 pnpm run build
 ```
 
 ### Develop
-
 To develop all apps and packages, run the following command:
 
 ```
-cd my-turborepo
 pnpm run dev
+```
+
+### Deploy
+Deploy client and server apps with vercel
+
+```
+pnpm prod
 ```
 
 ### Remote Caching
