@@ -1,10 +1,33 @@
 <script lang="ts">
-import { defineComponent, h } from 'vue'
+import { defineComponent, PropType, h, computed } from 'vue'
 
 export default defineComponent({
   name: 'NContainer',
-  setup(_, { slots }) {
-    return () => h('div', { class: 'container mx-auto' }, slots.default ? slots.default() : '')
+  props: {
+    tag: {
+      type: String as PropType<string>,
+      default: 'div'
+    },
+    fluid: {
+      type: [Boolean, String] as PropType<boolean | string>,
+      default: false,
+      validator: (value: boolean | string): boolean => {
+        return [true, false, 'sm', 'md', 'lg', 'xl', '2xl'].includes(value)
+      }
+    }
+  },
+  setup(props, { slots }) {
+    const style = computed(() => {
+      return [
+        'container',
+        typeof props.fluid === 'boolean' ?
+          props.fluid === true ?
+            ''
+            : 'mx-auto'
+          : props.fluid + ':mx-auto'
+      ]
+    })
+    return () => h('div', { class: style.value }, slots.default ? slots.default() : '')
   }
 })
 </script>

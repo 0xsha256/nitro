@@ -1,5 +1,5 @@
 import path, { resolve } from 'path'
-import { defineConfig, searchForWorkspaceRoot } from 'vite'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import pages from 'vite-plugin-pages'
 import layouts from 'vite-plugin-vue-layouts'
@@ -124,7 +124,7 @@ export default defineConfig({
   server: {
     fs: {
       allow: [
-        searchForWorkspaceRoot(process.cwd())
+        // searchForWorkspaceRoot(process.cwd())
       ],
       strict: false
     }
