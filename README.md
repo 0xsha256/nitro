@@ -4,7 +4,7 @@ A turborepo with with the fastest tools available to build full stack JS applica
 
 ## What's inside?
 
-This turborepo uses [pnpm](https://pnpm.io) as a packages manager. It includes the following apps/saas/packages:
+This turborepo uses [pnpm](https://pnpm.io) as a packages manager. It includes the following apps/packages:
 
 ### Apps
 - `server`: [Express.js](https://expressjs.com/) app with auto routing
