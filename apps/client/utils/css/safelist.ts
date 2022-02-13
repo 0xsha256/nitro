@@ -26,7 +26,8 @@ const classesWithNumberPostFix = [
   'p', 'px', 'py', 'pt', 'pb', 'pl',
   'pr', 'm', 'mx', 'my', 'mt', 'mb',
   'ml', 'mr', 'grid-cols', 'gap',
-  'grid-rows', 'row-start', 'row-end'
+  'grid-rows', 'row-start', 'row-end',
+  'w', 'h'
 ].map((className) =>
   range(20).map((num) => mediaQueries.map((size, key) =>
     `${key === 0 ? '' : `${size}:`}${className}-${num}`
@@ -45,25 +46,29 @@ const classesWithStringPostFix = [
     `${key === 0 ? '' : `${size}:`}${className}`
   )).toString().replace(/,/g, ' ')
 
-
 const allColors = [] as string[]
 Object.entries(colors).map((i) => {
+  if (typeof i[1] !== 'object') {
+    i.map((el, key, array) => {
+      if (!String(el).includes('#')) {
+        allColors.push(String(el))
+      }
+    })
+  } else {
+    i.map((el, key, array) => {
 
-  return i.map((el, key, array) => {
+      if (typeof el === 'object') {
+        const name = array[key - 1]
 
-    if (typeof el === 'object') {
-      const name = array[key - 1]
-
-      return Object.keys(el).map((level) => {
-        allColors.push(`${name}-${level}`)
-      })
-    } else {
-      //
-    }
-  })
+        Object.keys(el).map((level) => {
+          allColors.push(`${name}-${level}`)
+        })
+      }
+    })
+  }
 })
 
-const classesWithColors = allColors.map((i) => {
+const classesWithColorsPostFix = allColors.map((i) => {
   return [
     `hover:bg-${i}`,
     `hover:text-${i}`,
@@ -77,5 +82,5 @@ const classesWithColors = allColors.map((i) => {
 export default [
   classesWithNumberPostFix,
   classesWithStringPostFix,
-  classesWithColors
+  classesWithColorsPostFix
 ]
